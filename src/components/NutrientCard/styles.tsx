@@ -1,5 +1,50 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { colors } from '../../utils/style/colors'
 
-export const NutrientCardWrapper = styled.div``
-export const ImgWrapper = styled.div``
-export const TextWrapper = styled.div``
+interface NutrientStyledProps {
+  readonly $backgroundColor?: string
+}
+
+export const NutrientCardWrapper = styled.div`
+  width: 258px;
+  height: 124px;
+  background-color: ${colors.backgroundGrey};
+  display: flex;
+  justify-content:space-evenly;
+  border-radius: 20px;
+  align-items: center;
+`
+
+export const ImgWrapper = styled.div<NutrientStyledProps>`
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  position:relative;
+  align-items: center;
+  &::before {    
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    ${({ $backgroundColor }) => {
+      return `background-color: ${$backgroundColor}`
+    }};
+    opacity: 0.3;
+    border-radius:20px;
+
+  }
+`
+export const TextWrapper = styled.div`
+display:flex;
+flex-direction: column;
+& h3{
+    margin: 0;
+}
+& p{
+    color:${colors.lightGrey}
+    margin: 0;
+}
+`

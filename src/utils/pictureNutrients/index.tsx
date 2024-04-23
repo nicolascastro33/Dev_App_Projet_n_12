@@ -3,6 +3,7 @@ import logoFat from '../../assets/nutrientsLogos/cheeseburger.png'
 import logoProtein from '../../assets/nutrientsLogos/chicken.png'
 import logoCarbohydrates from '../../assets/nutrientsLogos/apple.png'
 
+
 export const nutrientPicture = (nutrient: string) => {
   switch (nutrient) {
     case 'Calories':

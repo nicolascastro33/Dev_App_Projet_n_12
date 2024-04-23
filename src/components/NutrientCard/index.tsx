@@ -1,5 +1,6 @@
 import { ImgWrapper, NutrientCardWrapper, TextWrapper } from './styles'
 import { nutrientPicture } from '../../utils/pictureNutrients'
+import { nutrientBackgroundColor } from '../../utils/nutrientBackgroundColor'
 
 interface NutrientProps {
   nutrient: string
@@ -9,10 +10,11 @@ interface NutrientProps {
 function NutrientCard({ nutrient, amount }: NutrientProps) {
   const unit = nutrient === "Calories" ? "kCal" : "g"
   const logo = nutrientPicture(nutrient)
-
+  const backgroundColor:string|undefined = nutrientBackgroundColor(nutrient)
+  console.log(backgroundColor)
   return (
     <NutrientCardWrapper>
-      <ImgWrapper>
+      <ImgWrapper $backgroundColor={backgroundColor}>
         <img src={logo} alt={`logo-${nutrient}`} />
       </ImgWrapper>
       <TextWrapper>
