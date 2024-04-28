@@ -11,7 +11,6 @@ function NutrientCard({ nutrient, amount }: NutrientProps) {
   const unit = nutrient === "Calories" ? "kCal" : "g"
   const logo = nutrientPicture(nutrient)
   const backgroundColor:string|undefined = nutrientBackgroundColor(nutrient)
-  console.log(backgroundColor)
   return (
     <NutrientCardWrapper>
       <ImgWrapper $backgroundColor={backgroundColor}>

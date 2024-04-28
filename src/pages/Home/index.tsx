@@ -1,22 +1,12 @@
-import UserAverageSessionChart from '../../components/Charts/UserAverageSessionsChart'
-import UsertActivityChart from '../../components/Charts/UsertActivityChart'
-import UserPerformanceChart from '../../components/Charts/UserPerformanceChart'
-import UserScoreChart from '../../components/Charts/UserScoreChart'
 import NutrientCard from '../../components/NutrientCard'
-import {
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_MAIN_DATA,
-  USER_PERFORMANCE,
-} from '../../data/data'
+import Charts from '../../components/Charts'
+import { USER_MAIN_DATA } from '../../data/data'
 
 import {
   MainWrapper,
-  AllChartsWrapper,
   AllNutrientsWrapper,
   TextWrapper,
   AllDataWrapper,
-  ChartWrapper,
 } from './style'
 
 function Home() {
@@ -25,31 +15,13 @@ function Home() {
   return (
     <MainWrapper>
       <TextWrapper>
-        <h1>Bonjour {firstName}</h1>
+        <h1>
+          Bonjour <span className="nameHeader">{firstName}</span>
+        </h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </TextWrapper>
       <AllDataWrapper>
-
-        
-        {/* All of the Charts Data */}
-        <AllChartsWrapper>
-          <ChartWrapper>
-            <UsertActivityChart sessions={USER_ACTIVITY.sessions} />
-          </ChartWrapper>
-          <ChartWrapper>
-            <UserAverageSessionChart
-              sessions={USER_AVERAGE_SESSIONS.sessions}
-            />
-          </ChartWrapper>
-          <ChartWrapper>
-            <UserPerformanceChart data={USER_PERFORMANCE.data} />
-          </ChartWrapper>
-
-          <ChartWrapper>
-            <UserScoreChart score={USER_MAIN_DATA.score} />
-          </ChartWrapper>
-        </AllChartsWrapper>
-
+        <Charts />
         {/*All of the Nutrition Data */}
         <AllNutrientsWrapper>
           <NutrientCard nutrient="Calories" amount={nutrients.calorieCount} />

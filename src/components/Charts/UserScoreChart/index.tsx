@@ -15,15 +15,15 @@ interface DataProps {
 function UserScoreChart({ score }: DataProps) {
   const data = [{ value: score * 100 }]
   return (
-    <ResponsiveContainer width="100%" aspect={3}>
+    <ResponsiveContainer  width="100%" height="100%">
       <RadialBarChart
         cx="50%"
         cy="50%"
-        innerRadius="100%"
-        barSize={25}
+        innerRadius="65%"
+        barSize={8}
         data={data}
-        startAngle={90}
-        endAngle={-270}
+        startAngle={-270}
+        endAngle={90}
       >
         <PolarAngleAxis
           type="number"
@@ -38,12 +38,10 @@ function UserScoreChart({ score }: DataProps) {
           fill={colors.primary}
         />
         <Legend
-          iconSize={5}
           layout="vertical"
           verticalAlign="middle"
           content={<CustomLegend payload={[]} />}
         />
-        <Legend iconSize={10} />
       </RadialBarChart>
     </ResponsiveContainer>
   )

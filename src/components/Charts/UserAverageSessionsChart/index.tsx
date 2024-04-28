@@ -1,29 +1,30 @@
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
+import {
+  LineChart,
+  Line,
+  XAxis,
+  Tooltip,
+  ResponsiveContainer,
+  YAxis,
+} from 'recharts'
 import { colors } from '../../../utils/style/colors'
 import { CustomAxisTick } from './custom/customAxisTick'
 import { CustomTooltip } from './custom/customTooltip'
+import { CustomCursor } from './custom/customCursor'
 
 interface SessionProps {
-  sessions:{
-      day: number
+  sessions: {
+    day: number
     sessionLength: number
   }[]
-  
 }
 
-function UserAverageSessionChart({sessions}: SessionProps) {  
+function UserAverageSessionChart({ sessions }: SessionProps) {
   return (
-    <ResponsiveContainer width="100%" aspect={3}>
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart
         width={500}
-        height={300}
+        height={400}
         data={sessions}
-        margin={{
-          top: 5,
-          right: 50,
-          left: 50,
-          bottom: 5,
-        }}
       >
         <XAxis
           dataKey={'day'}
@@ -31,12 +32,26 @@ function UserAverageSessionChart({sessions}: SessionProps) {
           axisLine={false}
           tick={CustomAxisTick}
         />
+        <YAxis
+          tickLine={false}
+          axisLine={false}
+          hide={true}
+          padding={{ top: 80 }}
+          type="number"
+          domain={[0, 'dataMax + 10']}
+        />
+
         <Tooltip
           active={true}
-          cursor={{ stroke: 'black', strokeWidth: '20%', strokeOpacity: '30%' }}
+          cursor={<CustomCursor points={[]} height={400} width={500} />}
           content={<CustomTooltip payload={[]} />}
         />
-        <Line type="monotone" dataKey="sessionLength" stroke={colors.white} />
+        <Line
+          type="monotone"
+          dataKey="sessionLength"
+          stroke={colors.white}
+          dot={false}
+        />
       </LineChart>
     </ResponsiveContainer>
   )

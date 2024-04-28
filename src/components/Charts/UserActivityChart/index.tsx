@@ -21,17 +21,17 @@ interface SessionsProps {
   }[]
 }
 
-function UsertActivityChart({ sessions }: SessionsProps) {
+function UserActivityChart({ sessions }: SessionsProps) {
   return (
-    <ResponsiveContainer width="100%" aspect={3}>
+    <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
         height={300}
         data={sessions}
         margin={{
-          top: 50,
-          right: 30,
-          left: 20,
+          top: 24,
+          right: 43,
+          left: 43,
           bottom: 5,
         }}
       >
@@ -46,18 +46,18 @@ function UsertActivityChart({ sessions }: SessionsProps) {
         <YAxis
           tick={CustomYaxisTick}
           type="number"
-          domain={[0, 'dataMax + 100']}
+          domain={[0, 'dataMax + 200']}
           tickLine={false}
           axisLine={false}
           orientation="right"
           tickCount={3}
-          tickMargin={45}
+          tickMargin={20}
           interval={0}
         />
         <Tooltip active={true} content={<CustomTooltip payload={[]} />} />
         <Legend
           verticalAlign="top"
-          height={64.5}
+          height={50}
           content={<CustomLegend payload={[]} />}
         />
         <Bar dataKey="kilogram" barSize={7} fill={colors.grey}  radius={[10, 10, 0, 0]}/>
@@ -67,4 +67,4 @@ function UsertActivityChart({ sessions }: SessionsProps) {
   )
 }
 
-export default UsertActivityChart
+export default UserActivityChart

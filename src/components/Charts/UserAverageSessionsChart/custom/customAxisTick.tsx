@@ -33,7 +33,7 @@ export const CustomAxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
       day = 'D'
   }
   return (
-    <text fill={colors.white} x={x && x - 10} y={y && y + 20}>
+    <text  fill={colors.white} x={x && x - 5} y={y}>
       {day}
     </text>
   )

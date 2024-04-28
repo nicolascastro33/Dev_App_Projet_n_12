@@ -15,7 +15,7 @@ const CustomLegendContainer = styled.div`
     font-weight: normal;
     font-size: 1rem;
     color: ${colors.grey};
-    margin-right: 100px;
+    margin: 0;
   }
   & .allTextWrapper {
     display: flex;
@@ -35,6 +35,7 @@ const CustomLegendContainer = styled.div`
     border-radius: 100%;
     }
   & h3 {
+    margin: 0;
     font-size: 1rem;
     color: ${colors.lightGrey};
     font-weight: normal;

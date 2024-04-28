@@ -7,8 +7,8 @@ const CustomLegendContainer = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  & h2 {
-    font-size: 1rem;
+  & h3 {
+    font-size: 1.6rem;
     margin: 0;
   }
   & p {
@@ -31,7 +31,7 @@ export const CustomLegend = ({ payload }: CustomLegendProps) => {
   const value = payload[0].payload.value
   return (
     <CustomLegendContainer>
-      <h2>{value}%</h2>
+      <h3>{value}%</h3>
       <p>de votre objectif</p>
     </CustomLegendContainer>
   )

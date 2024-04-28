@@ -2,7 +2,12 @@ import swimLogo from '../../assets/sportLogos/swim.png'
 import bikeLogo from '../../assets/sportLogos/bike.png'
 import meditationLogo from '../../assets/sportLogos/meditation.png'
 import musculationLogo from '../../assets/sportLogos/musculation.png'
-import { AllButtonsWrapper, ButtonSport, CopyrightText, VerticalNavWrapper } from './style'
+import {
+  AllButtonsWrapper,
+  ButtonSport,
+  CopyrightText,
+  VerticalNavWrapper,
+} from './style'
 
 function VerticalNav() {
   return (

@@ -96,28 +96,28 @@ export const USER_PERFORMANCE = {
   userId: 18,
   data: [
     {
-      value: 200,
-      kind: 'cardio',
+      value: 110,
+      kind: 'intensity',
+    },
+    {
+      value: 220,
+      kind: 'speed',
+    },
+    {
+      value: 80,
+      kind: 'strenght',
+    },
+    {
+      value: 80,
+      kind: 'endurance',
     },
     {
       value: 240,
       kind: 'energy',
     },
     {
-      value: 80,
-      kind: "endurance",
-    },
-    {
-      value: 80,
-      kind: "strenght",
-    },
-    {
-      value: 220,
-      kind: "speed",
-    },
-    {
-      value: 110,
-      kind: "intensity",
+      value: 200,
+      kind: 'cardio',
     },
   ],
 }

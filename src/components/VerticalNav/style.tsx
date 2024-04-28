@@ -26,6 +26,12 @@ export const ButtonSport = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 300ms ease-in;
+  &:hover{
+    transform: scale(1.1);
+  }
   & img {
     height: 32px;
   }
