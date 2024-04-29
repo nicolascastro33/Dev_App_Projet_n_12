@@ -1,6 +1,6 @@
 import NutrientCard from '../../components/NutrientCard'
 import Charts from '../../components/Charts'
-import { USER_MAIN_DATA } from '../../data/data'
+import { useSportSeeStore } from '../../provider/context'
 
 import {
   MainWrapper,
@@ -8,15 +8,20 @@ import {
   TextWrapper,
   AllDataWrapper,
 } from './style'
+import { useEffect } from 'react'
 
 function Home() {
-  const firstName = USER_MAIN_DATA.userInfos.firstName
-  const nutrients = USER_MAIN_DATA.keyData
+  const { mainData, getMainData } = useSportSeeStore((state) => state)
+  useEffect(() => {
+    getMainData(18)
+  }, [getMainData])
+
   return (
     <MainWrapper>
       <TextWrapper>
         <h1>
-          Bonjour <span className="nameHeader">{firstName}</span>
+          Bonjour{' '}
+          <span className="nameHeader">{mainData?.userInfos.firstName}</span>
         </h1>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </TextWrapper>
@@ -24,13 +29,22 @@ function Home() {
         <Charts />
         {/*All of the Nutrition Data */}
         <AllNutrientsWrapper>
-          <NutrientCard nutrient="Calories" amount={nutrients.calorieCount} />
-          <NutrientCard nutrient="Protéines" amount={nutrients.proteinCount} />
+          <NutrientCard
+            nutrient="Calories"
+            amount={mainData?.keyData.calorieCount}
+          />
+          <NutrientCard
+            nutrient="Protéines"
+            amount={mainData?.keyData.proteinCount}
+          />
           <NutrientCard
             nutrient="Glucides"
-            amount={nutrients.carbohydrateCount}
+            amount={mainData?.keyData.carbohydrateCount}
           />
-          <NutrientCard nutrient="Lipides" amount={nutrients.lipidCount} />
+          <NutrientCard
+            nutrient="Lipides"
+            amount={mainData?.keyData.lipidCount}
+          />
         </AllNutrientsWrapper>
       </AllDataWrapper>
     </MainWrapper>

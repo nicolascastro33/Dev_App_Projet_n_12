@@ -1,15 +1,15 @@
-import { ChartsWrapper, ChartWrapper,} from "./style"
-import UserActivityChart from "./UserActivityChart"
-import UserAverageSessionChart from "./UserAverageSessionsChart"
-import UserPerformanceChart from "./UserPerformanceChart"
-import UserScoreChart from "./UserScoreChart"
+import { ChartsWrapper, ChartWrapper } from './style'
+import UserActivityChart from './UserActivityChart'
+import UserAverageSessionChart from './UserAverageSessionsChart'
+import UserPerformanceChart from './UserPerformanceChart'
+import UserScoreChart from './UserScoreChart'
 
 import {
-    USER_ACTIVITY,
-    USER_AVERAGE_SESSIONS,
-    USER_MAIN_DATA,
-    USER_PERFORMANCE,
-  } from '../../data/data'
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_MAIN_DATA,
+  USER_PERFORMANCE,
+} from '../../data/data'
 
 function Charts() {
   return (
@@ -24,7 +24,6 @@ function Charts() {
       <ChartWrapper>
         <UserPerformanceChart data={USER_PERFORMANCE.data} />
       </ChartWrapper>
-
       <ChartWrapper>
         <h2>Score</h2>
         <UserScoreChart score={USER_MAIN_DATA.score} />

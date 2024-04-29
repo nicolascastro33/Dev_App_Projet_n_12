@@ -4,7 +4,7 @@ import { nutrientBackgroundColor } from '../../utils/nutrientBackgroundColor'
 
 interface NutrientProps {
   nutrient: string
-  amount: number
+  amount: number|undefined
 }
 
 function NutrientCard({ nutrient, amount }: NutrientProps) {
