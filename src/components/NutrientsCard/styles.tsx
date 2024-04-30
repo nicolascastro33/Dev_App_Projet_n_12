@@ -5,6 +5,16 @@ interface NutrientStyledProps {
   readonly $backgroundColor?: string
 }
 
+export const AllNutrientsWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: row;
+  }
+`
+
 export const NutrientCardWrapper = styled.div`
   width: 258px;
   height: 124px;

@@ -12,7 +12,7 @@ interface DataProps {
   score: number
 }
 
-function UserScoreChart({ score }: DataProps) {
+function RadialBarChartView({ score }: DataProps) {
   const data = [{ value: score * 100 }]
   return (
     <ResponsiveContainer  width="100%" height="100%">
@@ -47,4 +47,4 @@ function UserScoreChart({ score }: DataProps) {
   )
 }
 
-export default UserScoreChart
+export default RadialBarChartView

@@ -34,13 +34,3 @@ export const AllDataWrapper = styled.div`
   }
 `
 
-export const AllNutrientsWrapper = styled.article`
-  display: flex;
-  flex-direction: column;
-  gap: 39px;
-  @media (max-width: 1200px) {
-    display: flex;
-    flex-direction: row;
-  }
-`
-5

@@ -1,13 +1,7 @@
-import NutrientCard from '../../components/NutrientCard'
-import Charts from '../../components/Charts'
+import NutrientsCard from '../../components/NutrientsCard/global'
+import Charts from '../../components/Charts/global'
 import { useSportSeeStore } from '../../provider/context'
-
-import {
-  MainWrapper,
-  AllNutrientsWrapper,
-  TextWrapper,
-  AllDataWrapper,
-} from './style'
+import { MainWrapper, TextWrapper, AllDataWrapper } from './style'
 import { useEffect } from 'react'
 
 function Home() {
@@ -27,25 +21,7 @@ function Home() {
       </TextWrapper>
       <AllDataWrapper>
         <Charts />
-        {/*All of the Nutrition Data */}
-        <AllNutrientsWrapper>
-          <NutrientCard
-            nutrient="Calories"
-            amount={mainData?.keyData.calorieCount}
-          />
-          <NutrientCard
-            nutrient="Protéines"
-            amount={mainData?.keyData.proteinCount}
-          />
-          <NutrientCard
-            nutrient="Glucides"
-            amount={mainData?.keyData.carbohydrateCount}
-          />
-          <NutrientCard
-            nutrient="Lipides"
-            amount={mainData?.keyData.lipidCount}
-          />
-        </AllNutrientsWrapper>
+        <NutrientsCard />
       </AllDataWrapper>
     </MainWrapper>
   )

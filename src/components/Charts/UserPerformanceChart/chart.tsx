@@ -12,11 +12,11 @@ import { CustomAngleAxisTick } from './custom/customAngleAxisTick'
 interface DataProps {
   data: {
     value: number
-    kind: string
+    kind: number
   }[]
 }
 
-function UserPerformanceChart({ data }: DataProps) {
+function RadarChartView({ data }: DataProps) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart
@@ -56,4 +56,4 @@ function UserPerformanceChart({ data }: DataProps) {
   )
 }
 
-export default UserPerformanceChart
+export default RadarChartView

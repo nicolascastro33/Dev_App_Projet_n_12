@@ -24,7 +24,7 @@ export interface userActivityProps {
 }
 
 export interface userPerformanceProps {
-  userId: 12
+  userId: number
   kind: {
     1: string
     2: string

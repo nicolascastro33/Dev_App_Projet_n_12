@@ -3,7 +3,7 @@ import { SportSeeFetchApi } from '../../fetch'
 import { userAverageSessionProps } from '../../interface'
 
 type UserAverageSessionState = {
-  averageSessionData: userAverageSessionProps | undefined
+  averageData: userAverageSessionProps | undefined
   averageLoading: boolean
   averageError: boolean
 }
@@ -20,15 +20,15 @@ export const userAverageSessionStore: StateCreator<
   [],
   UserAverageSessionStoreType
 > = (set, get) => ({
-  averageSessionData: undefined,
+  averageData: undefined,
   averageLoading: true,
   averageError: false,
 
   getAverageSessionData: async (id) => {
     set(() => ({ averageLoading: true }))
     const data = await SportSeeFetchApi.userAverageSession(id)
-    set(() => ({ averageSessionData: data }))
-    if (!get().averageSessionData) {
+    set(() => ({ averageData: data }))
+    if (!get().averageData) {
       set(() => ({ averageError: true }))
     }
     set(() => ({ averageLoading: false }))

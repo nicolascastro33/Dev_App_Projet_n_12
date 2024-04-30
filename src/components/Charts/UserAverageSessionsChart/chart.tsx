@@ -18,7 +18,7 @@ interface SessionProps {
   }[]
 }
 
-function UserAverageSessionChart({ sessions }: SessionProps) {
+function LineChartView({ sessions }: SessionProps) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
@@ -57,4 +57,4 @@ function UserAverageSessionChart({ sessions }: SessionProps) {
   )
 }
 
-export default UserAverageSessionChart
+export default LineChartView
