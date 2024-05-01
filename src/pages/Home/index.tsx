@@ -1,4 +1,4 @@
-import NutrientsCard from '../../components/NutrientsCard/global'
+import NutrientsCard from '../../components/NutrientsCard/global/constroller'
 import Charts from '../../components/Charts/global'
 import { useSportSeeStore } from '../../provider/context'
 import { MainWrapper, TextWrapper, AllDataWrapper } from './style'
@@ -9,7 +9,7 @@ function Home() {
   const { userId, mainData, getMainData, mainError, mainLoading } =
     useSportSeeStore((state) => state)
   useEffect(() => {
-    if (!mainData || userId !== mainData?.data.id) getMainData(12)
+    if (!mainData || userId !== mainData?.data.id) getMainData(18)
   }, [getMainData, mainData, userId])
 
   if (mainError) {

@@ -1,5 +1,4 @@
 import { ImgWrapper, NutrientCardWrapper, TextWrapper } from '../styles'
-
 interface NutrientCardProps {
   data: {
     nutrient: string
