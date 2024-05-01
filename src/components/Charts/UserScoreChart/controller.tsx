@@ -2,13 +2,14 @@ import { useSportSeeStore } from '../../../provider/context'
 import { useEffect } from 'react'
 import RadialBarChartView from './chart'
 import { Loader } from '../../../utils/style/loader'
-import { loaderColor } from '../../../utils/loaderColor'
 
 function UserScoreChart() {
   const { userId, mainData, mainError, mainLoading, getMainData } =
     useSportSeeStore((state) => state)
+  const score = mainData?.data.score
   useEffect(() => {
-    if ((!mainData || userId !== mainData?.id) && userId) getMainData(userId)
+    if ((!mainData || userId !== mainData?.data.id) && userId)
+      getMainData(userId)
   }, [getMainData, mainData, userId])
 
   if (mainError) {
@@ -18,9 +19,9 @@ function UserScoreChart() {
   return (
     <>
       {mainLoading ? (
-        <Loader color={loaderColor("black")}/>
+        <Loader color="primary" />
       ) : (
-        mainData && <RadialBarChartView score={mainData?.todayScore} />
+        score && <RadialBarChartView score={score * 100} />
       )}
     </>
   )

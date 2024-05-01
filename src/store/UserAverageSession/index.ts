@@ -19,7 +19,7 @@ export const userAverageSessionStore: StateCreator<
   [],
   [],
   UserAverageSessionStoreType
-> = (set, get) => ({
+> = (set) => ({
   averageData: undefined,
   averageLoading: true,
   averageError: false,
@@ -27,8 +27,9 @@ export const userAverageSessionStore: StateCreator<
   getAverageSessionData: async (id) => {
     set(() => ({ averageLoading: true }))
     const data = await SportSeeFetchApi.userAverageSession(id)
-    set(() => ({ averageData: data }))
-    if (!get().averageData) {
+    if (data && typeof data !== 'string') {
+      set(() => ({ averageData: data }))
+    } else {
       set(() => ({ averageError: true }))
     }
     set(() => ({ averageLoading: false }))

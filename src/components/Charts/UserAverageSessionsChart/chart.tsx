@@ -36,7 +36,7 @@ function LineChartView({ sessions }: SessionProps) {
           tickLine={false}
           axisLine={false}
           hide={true}
-          padding={{ top: 80 }}
+          padding={{ bottom:30, top: 80 }}
           type="number"
           domain={[0, 'dataMax + 10']}
         />

@@ -30,10 +30,21 @@ export const NavHeader = styled.nav`
   align-items: center;
   gap: 100px;
   margin-right: 50px;
+  @media (max-width: 1200px) {
+    gap: 50px;
+    margin-left:20px;
+    margin-right: 20px
+  }
   & h3 {
     cursor: pointer;
     font-size: 1.2rem;
     color: ${colors.white};
+    @media (max-width: 1200px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
     &:hover{
       text-decoration: underline;
     }

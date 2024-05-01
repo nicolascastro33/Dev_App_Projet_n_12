@@ -4,6 +4,11 @@ import { colors } from "../../utils/style/colors"
 export const ChartsWrapper = styled.div`
   display: grid;
   gap: 28px;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const ChartWrapper = styled.article`

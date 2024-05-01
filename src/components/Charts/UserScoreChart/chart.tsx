@@ -13,7 +13,7 @@ interface DataProps {
 }
 
 function RadialBarChartView({ score }: DataProps) {
-  const data = [{ value: score * 100 }]
+  const data = [{ value: score }]
   return (
     <ResponsiveContainer  width="100%" height="100%">
       <RadialBarChart

@@ -4,7 +4,7 @@ import { userMainProps } from '../../interface'
 
 type UserMainState = {
   userId: number | undefined
-  mainData: userMainProps | undefined
+  mainData: userMainProps | undefined 
   mainLoading: boolean
   mainError: boolean
 }
@@ -19,7 +19,7 @@ export const userMainStore: StateCreator<
   [],
   [],
   UserMainStoreType
-> = (set, get) => ({
+> = (set) => ({
   userId: undefined,
   mainData: undefined,
   mainLoading: true,
@@ -28,8 +28,10 @@ export const userMainStore: StateCreator<
   getMainData: async (id) => {
     set(() => ({ userId: id, mainLoading: true }))
     const data = await SportSeeFetchApi.userMainData(id)
-    set(() => ({ mainData: data }))
-    if (!get().mainData) {
+    if (data && typeof data !== "string") {
+      if(!data.data.score)data.data.score = data.data.todayScore
+      set(() => ({ mainData: data }))
+    } else {
       set(() => ({ mainError: true }))
     }
     set(() => ({ mainLoading: false }))

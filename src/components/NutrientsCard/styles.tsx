@@ -13,6 +13,10 @@ export const AllNutrientsWrapper = styled.article`
     display: flex;
     flex-direction: row;
   }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const NutrientCardWrapper = styled.div`
@@ -23,6 +27,9 @@ export const NutrientCardWrapper = styled.div`
   justify-content:space-evenly;
   border-radius: 20px;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const ImgWrapper = styled.div<NutrientStyledProps>`

@@ -2,7 +2,6 @@ import { useSportSeeStore } from '../../../provider/context'
 import { useEffect } from 'react'
 import LineChartView from './chart'
 import { Loader } from '../../../utils/style/loader'
-import { loaderColor } from '../../../utils/loaderColor'
 
 function UserAverageSessionChart() {
   const {
@@ -13,7 +12,7 @@ function UserAverageSessionChart() {
     averageData,
   } = useSportSeeStore((state) => state)
   useEffect(() => {
-    if ((!averageData || userId !== averageData?.userId) && userId) getAverageSessionData(userId)
+    if ((!averageData || userId !== averageData?.data.userId) && userId) getAverageSessionData(userId)
   }, [getAverageSessionData, averageData, userId])
 
   if (averageError) {
@@ -23,9 +22,9 @@ function UserAverageSessionChart() {
   return (
     <>
       {averageLoading ? (
-        <Loader color={loaderColor("white")}/>
+        <Loader color="white"/>
       ) : (
-        averageData && <LineChartView sessions={averageData?.sessions} />
+        averageData && <LineChartView sessions={averageData?.data.sessions} />
       )}
     </>
   )

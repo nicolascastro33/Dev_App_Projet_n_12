@@ -2,7 +2,6 @@ import { useSportSeeStore } from '../../../provider/context'
 import { useEffect } from 'react'
 import RadarChartView from './chart'
 import { Loader } from '../../../utils/style/loader'
-import { loaderColor } from '../../../utils/loaderColor'
 
 function UserPerformanceChart() {
   const {
@@ -13,7 +12,7 @@ function UserPerformanceChart() {
     performanceData,
   } = useSportSeeStore((state) => state)
   useEffect(() => {
-    if ((!performanceData || userId !== performanceData?.userId) && userId)
+    if ((!performanceData || userId !== performanceData?.data.userId) && userId)
       getPerformanceData(userId)
   }, [getPerformanceData, performanceData, userId])
 
@@ -24,9 +23,9 @@ function UserPerformanceChart() {
   return (
     <>
       {performanceLoading ? (
-        <Loader color={loaderColor("white")}/>
+        <Loader color="primary"/>
       ) : (
-        performanceData && <RadarChartView data={performanceData?.data} />
+        performanceData && <RadarChartView data={performanceData?.data.data} />
       )}
     </>
   )

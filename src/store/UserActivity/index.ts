@@ -18,7 +18,7 @@ export const userActivityStore: StateCreator<
   [],
   [],
   UserActivityStoreType
-> = (set, get) => ({
+> = (set) => ({
   activityData: undefined,
   activityLoading: true,
   activityError: false,
@@ -26,8 +26,9 @@ export const userActivityStore: StateCreator<
   getActivityData: async (id) => {
     set(() => ({ activityLoading: true }))
     const data = await SportSeeFetchApi.userActivity(id)
-    set(() => ({ activityData: data }))
-    if (!get().activityData) {
+    if (data && typeof data !== 'string') {
+      set(() => ({ activityData: data }))
+    } else {
       set(() => ({ activityError: true }))
     }
     set(() => ({ activityLoading: false }))

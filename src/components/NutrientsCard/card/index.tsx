@@ -1,4 +1,4 @@
-import { ImgWrapper, NutrientCardWrapper, TextWrapper } from './styles'
+import { ImgWrapper, NutrientCardWrapper, TextWrapper } from '../styles'
 
 interface NutrientCardProps {
   data: {

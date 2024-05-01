@@ -2,7 +2,6 @@ import { useSportSeeStore } from '../../../provider/context'
 import { useEffect } from 'react'
 import BarChartView from './chart'
 import { Loader } from '../../../utils/style/loader'
-import { loaderColor } from '../../../utils/loaderColor'
 
 function UserActivityChart() {
   const {
@@ -13,7 +12,7 @@ function UserActivityChart() {
     activityData,
   } = useSportSeeStore((state) => state)
   useEffect(() => {
-    if ((!activityData || userId !== activityData?.userId) && userId)
+    if ((!activityData || userId !== activityData?.data.userId) && userId)
       getActivityData(userId)
   }, [activityData, getActivityData, userId])
 
@@ -24,9 +23,9 @@ function UserActivityChart() {
   return (
     <>
       {activityLoading ? (
-        <Loader color={loaderColor('black')} />
+        <Loader color="primary" />
       ) : (
-        activityData && <BarChartView sessions={activityData?.sessions} />
+        activityData && <BarChartView sessions={activityData?.data.sessions} />
       )}
     </>
   )

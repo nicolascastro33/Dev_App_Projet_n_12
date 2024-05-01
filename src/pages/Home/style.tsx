@@ -7,6 +7,9 @@ export const MainWrapper = styled.main`
   margin-left: 15%;
   margin-right: 90px;
   padding-bottom: 86px;
+  @media (max-width: 1200px) {
+    margin-right: 30px;
+  }
 `
 
 export const TextWrapper = styled.div`

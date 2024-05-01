@@ -1,40 +1,40 @@
 import { useSportSeeStore } from '../../provider/context'
-import { nutrientPicture } from '../../utils/pictureNutrients'
-import { nutrientBackgroundColor } from '../../utils/nutrientBackgroundColor'
+import { NutrientsCardData } from './data'
 import NutrientCard from './card'
 import { useEffect } from 'react'
 import { AllNutrientsWrapper } from './styles'
 
-const NutrientsCardData = (nutrient: string, amount: number | undefined) => {
-  const unit = nutrient === 'Calories' ? 'kCal' : 'g'
-  const logo = nutrientPicture(nutrient)
-  const backgroundColor = nutrientBackgroundColor(nutrient)
-  return { unit, nutrient, logo, backgroundColor, amount }
-}
 
 function NutrientsCard() {
   const { mainData, userId, getMainData } = useSportSeeStore((state) => state)
 
   useEffect(() => {
-    if ((!mainData || userId !== mainData?.id) && userId) getMainData(userId)
+    if ((!mainData || userId !== mainData?.data.id) && userId)
+      getMainData(userId)
   }, [getMainData, mainData, userId])
 
   return (
     <AllNutrientsWrapper>
       <NutrientCard
-        data={NutrientsCardData('Calories', mainData?.keyData.calorieCount)}
+        data={NutrientsCardData(
+          'Calories',
+          mainData?.data.keyData.calorieCount
+        )}
       />
       <NutrientCard
-        data={NutrientsCardData('Protéines', mainData?.keyData.proteinCount)}
+        data={NutrientsCardData(
+          'Protéines',
+          mainData?.data.keyData.proteinCount
+        )}
       />
       <NutrientCard
         data={NutrientsCardData(
           'Glucides',
-          mainData?.keyData.carbohydrateCount
+          mainData?.data.keyData.carbohydrateCount
         )}
       />
       <NutrientCard
-        data={NutrientsCardData('Lipides', mainData?.keyData.lipidCount)}
+        data={NutrientsCardData('Lipides', mainData?.data.keyData.lipidCount)}
       />
     </AllNutrientsWrapper>
   )

@@ -1,6 +1,10 @@
 import { colors } from './colors'
 import styled, { keyframes } from 'styled-components'
 
+interface LoaderProps {
+  color: string
+}
+
 const rotate = keyframes`
     from {
         transform: rotate(0deg);
@@ -11,7 +15,7 @@ const rotate = keyframes`
     }
 `
 
-export const Loader = styled.div<{ color?: string }>`
+const LoaderWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,8 +27,20 @@ export const Loader = styled.div<{ color?: string }>`
   border-radius: 22px;
   animation: ${rotate} 1s infinite linear;
   ${({ color }) =>
-    color && `
+    color &&
+    `
     color:${color};
-    border: 6px solid ${color};
         `}
 `
+
+export const Loader = ({ color }: LoaderProps) => {
+  let colorLoader
+  switch (color) {
+    case 'white':
+      colorLoader = colors.white
+      break
+    case 'primary':
+      colorLoader = colors.primary
+  }
+  return <LoaderWrapper color={colorLoader} />
+}
