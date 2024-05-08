@@ -8,7 +8,7 @@ export const useSportSeeStore = <T>(selector: (store: GlobalStoreType) => T): T 
   const storeContext = useContext(StoreContext)
 
   if (!storeContext) {
-    throw new Error(`useFlatStore must be use within FlatStoreProvider`)
+    throw new Error(`useSportSeeStore must be use within SportSeeProvider`)
   }
 
   return useStore(storeContext, selector)

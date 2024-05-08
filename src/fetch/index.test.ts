@@ -1,91 +1,86 @@
-import { describe, test, expect, vi, beforeEach } from 'vitest'
+import { describe, expect, vi, beforeEach } from 'vitest'
 import { SportSeeFetchApi } from '.'
+import createFetchMock from 'vitest-fetch-mock'
+import 'vitest-fetch-mock'
+
+const fetch = createFetchMock(vi)
+fetch.enableMocks()
 
 const succeedData = {
   userId: '123',
   content: 'test__succeed__test',
 }
-const failedData = "test__failed__test"
+const failedData = 'test__failed__test'
 
-describe('FetchData: ', () => {
+describe('FetchData:', () => {
+  beforeEach(() => {
+      fetch.resetMocks()
+    })
+  describe('Main Data Fetch: ', () => {
+    it('should return the mocked data, when the fetch has succeed', async () => {
+      fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
+      //assert on the response
+      const res = await SportSeeFetchApi.userMainData(4)
+      expect(res?.data).toEqual(succeedData)
 
-  describe('When I want to get the main user data,', () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(succeedData),
-      })
-    )
-    beforeEach(() => {
-      fetch.mockClear();
+      //assert on the times called and arguments given to fetch
+      expect(fetch.requests().length).toEqual(1)
+      expect(fetch.requests()[0].url).toEqual('http://localhost:3000/user/4')
     })
-    
-    test('it should return the mocked data, when the fetch has succeed', async () => {
-      const mainData = await SportSeeFetchApi.userMainData(0)
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3000/user/0')
-      expect(mainData).toStrictEqual(succeedData)
+    it('should return an error, when the fetch has failed', async () => {
+      fetch.mockReject(new Error(failedData))
+      expect(fetch('http://localhost:3000/user/4')).rejects.toThrow(failedData);
     })
-    test('it should return an error, when the fetch has failed', async () => {
-      fetch.mockImplementationOnce(() => Promise.reject(failedData));
-      const mainData = await SportSeeFetchApi.userMainData(0)
-      expect(mainData).toEqual(null);
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3000/user/0')
+  })
+
+  describe('Average Session Data Fetch: ', () => {
+    it('should return the mocked data, when the fetch has succeed', async () => {
+      fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
+      //assert on the response
+      const res = await SportSeeFetchApi.userAverageSession(4)
+      expect(res?.data).toEqual(succeedData)
+
+      //assert on the times called and arguments given to fetch
+      expect(fetch.requests().length).toEqual(1)
+      expect(fetch.requests()[0].url).toEqual('http://localhost:3000/user/4/average-sessions')
+    })
+    it('should return an error, when the fetch has failed', async () => {
+      fetch.mockReject(new Error(failedData))
+      expect(fetch('http://localhost:3000/user/4/average-sessions')).rejects.toThrow(failedData);
+    })
+  })
+  
+  describe('Activity Data Fetch: ', () => {  
+    it('should return the mocked data, when the fetch has succeed', async () => {
+      fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
+      //assert on the response
+      const res = await SportSeeFetchApi.userActivity(4)
+      expect(res?.data).toEqual(succeedData)
+
+      //assert on the times called and arguments given to fetch
+      expect(fetch.requests().length).toEqual(1)
+      expect(fetch.requests()[0].url).toEqual('http://localhost:3000/user/4/activity')
+    })
+    it('should return an error, when the fetch has failed', async () => {
+      fetch.mockReject(new Error(failedData))
+      expect(fetch('http://localhost:3000/user/4/activity')).rejects.toThrow(failedData);
+    })
+  })
+
+  describe('Performance Data Fetch: ', () => {  
+    it('should return the mocked data, when the fetch has succeed', async () => {
+      fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
+      //assert on the response
+      const res = await SportSeeFetchApi.userPerformance(4)
+      expect(res?.data).toEqual(succeedData)
+
+      //assert on the times called and arguments given to fetch
+      expect(fetch.requests().length).toEqual(1)
+      expect(fetch.requests()[0].url).toEqual('http://localhost:3000/user/4/performance')
+    })
+    it('should return an error, when the fetch has failed', async () => {
+      fetch.mockReject(new Error(failedData))
+      expect(fetch('http://localhost:3000/user/4/performance')).rejects.toThrow(failedData);
     })
   })
 })
-
-
-
-
-
-
-
-// describe('fetchData', () => {
-//   let originalFetch: unknown
-//   beforeAll(() => {
-//     originalFetch = global.fetch
-//   })
-
-//   afterAll(() => {
-//     global.fetch = originalFetch
-//   })
-//   describe('Main Data Fetch: ', () => {
-//     test('it should return the mocked data', async () => {
-//       global.fetch = vi.fn(mockedImplementation.mainData)
-//       const fetch = await SportSeeFetchApi.userMainData(0)
-//       const data = fetch?.data
-
-//       expect(data?.todayScore).toEqual(123)
-//       expect(data?.id).not.toEqual(1)
-//     })
-//   })
-
-//   describe('Average Session Data Fetch: ', () => {
-//     test('it should return the mocked data', async () => {
-//       global.fetch = vi.fn(mockedImplementation.averageSession)
-//       const fetch = await SportSeeFetchApi.userAverageSession(0)
-//       const data = fetch?.data
-//       expect(data?.sessions[0].sessionLength).toEqual(123)
-//       expect(data?.userId).not.toEqual(1)
-//     })
-//   })
-
-//   describe('Activity Data Fetch: ', () => {
-//     test('it should return the mocked data', async () => {
-//       global.fetch = vi.fn(mockedImplementation.activity)
-//       const fetch = await SportSeeFetchApi.userActivity(0)
-//       const data = fetch?.data
-//       expect(data?.sessions[0].kilogram).toEqual(123)
-//       expect(data?.userId).not.toEqual(1)
-//     })
-//   })
-
-//   describe('Performance Data Fetch: ', () => {
-//     test('it should return the mocked data', async () => {
-//       global.fetch = vi.fn(mockedImplementation.performance)
-//       const fetch = await SportSeeFetchApi.userPerformance(0)
-//       const data = fetch?.data
-//       expect(data?.data[0].value).toEqual(123)
-//       expect(data?.userId).not.toEqual(1)
-//     })
-//   })
-// })

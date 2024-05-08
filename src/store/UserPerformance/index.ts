@@ -1,9 +1,10 @@
 import { StateCreator } from 'zustand'
 import { SportSeeFetchApi } from '../../fetch'
-import { userPerformanceProps } from '../../interface'
+import { userDataPerformanceProps } from '../../interface'
 
 type UserPerformanceState = {
-  performanceData: userPerformanceProps | undefined
+  performanceDataId: number|undefined
+  performanceData: userDataPerformanceProps[] | undefined
   performanceLoading: boolean
   performanceError: boolean
 }
@@ -20,15 +21,18 @@ export const userPerformanceStore: StateCreator<
   [],
   UserPerformanceStoreType
 > = (set) => ({
+  performanceDataId: undefined,
   performanceData: undefined,
   performanceLoading: true,
   performanceError: false,
 
   getPerformanceData: async (id) => {
     set(() => ({ performanceLoading: true }))
-    const data = await SportSeeFetchApi.userPerformance(id)
-    if (data && typeof data !== 'string') {
+    const fetch = await SportSeeFetchApi.userPerformance(id)
+    if (fetch && typeof fetch !== 'string') {
+      const data = [...fetch.data.data.reverse()]
       set(() => ({ performanceData: data }))
+      set(() => ({ performanceDataId: id }))
     } else {
       set(() => ({ performanceError: true }))
     }

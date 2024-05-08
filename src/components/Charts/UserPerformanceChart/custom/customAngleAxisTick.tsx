@@ -15,11 +15,11 @@ export const CustomAngleAxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
   switch (payload?.value) {
     case 1:
       kind = 'Cardio'
-      newX = x - 45
+      newX = x - 35
       break
     case 2:
       kind = 'Energie'
-      newX = x - 45
+      newX = x - 35
       break
     case 3:
       kind = 'Endurance'

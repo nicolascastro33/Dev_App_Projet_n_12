@@ -7,14 +7,15 @@ function UserPerformanceChart() {
   const {
     userId,
     getPerformanceData,
+    performanceDataId,
     performanceError,
     performanceLoading,
     performanceData,
   } = useSportSeeStore((state) => state)
   useEffect(() => {
-    if ((!performanceData || userId !== performanceData?.data.userId) && userId)
+    if ((!performanceData || userId !== performanceDataId) && userId)
       getPerformanceData(userId)
-  }, [getPerformanceData, performanceData, userId])
+  }, [getPerformanceData, performanceData, performanceDataId, userId])
 
   if (performanceError) {
     return <p>There was an error getting the data for this chart</p>
@@ -25,7 +26,7 @@ function UserPerformanceChart() {
       {performanceLoading ? (
         <Loader color="primary"/>
       ) : (
-        performanceData && <RadarChartView data={performanceData?.data.data} />
+        performanceData && <RadarChartView data={performanceData} />
       )}
     </>
   )

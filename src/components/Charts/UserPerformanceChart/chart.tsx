@@ -26,7 +26,8 @@ function RadarChartView({ data }: DataProps) {
         data={data}
         margin={{
           top: 20,
-  
+          left: 30,
+          right: 30,
           bottom: 20,
         }}
       >

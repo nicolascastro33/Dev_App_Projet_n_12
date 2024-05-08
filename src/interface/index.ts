@@ -6,8 +6,8 @@ export interface userMainProps {
       lastName: string
       age: number
     }
-    score: number|undefined
-    todayScore:number|undefined
+    score: number | undefined
+    todayScore: number | undefined
     keyData: {
       calorieCount: number
       proteinCount: number
@@ -26,6 +26,11 @@ export interface userActivityProps {
       calories: number
     }[]
   }
+}
+
+export interface userDataPerformanceProps {
+    value: number
+    kind: number
 }
 
 export interface userPerformanceProps {
