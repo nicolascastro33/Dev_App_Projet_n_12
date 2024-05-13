@@ -24,7 +24,8 @@ export const NutrientCardWrapper = styled.div`
   height: 124px;
   background-color: ${colors.backgroundGrey};
   display: flex;
-  justify-content:space-evenly;
+  padding-left: 32px;
+  gap: 32px;
   border-radius: 20px;
   align-items: center;
   @media (max-width: 768px) {
@@ -37,31 +38,33 @@ export const ImgWrapper = styled.div<NutrientStyledProps>`
   height: 60px;
   display: flex;
   justify-content: center;
-  position:relative;
+  position: relative;
   align-items: center;
-  &::before {    
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     ${({ $backgroundColor }) => {
       return `background-color: ${$backgroundColor}`
     }};
     opacity: 0.3;
-    border-radius:20px;
-
+    border-radius: 5px;
   }
 `
 export const TextWrapper = styled.div`
 display:flex;
 flex-direction: column;
+gap: 5px;
 & h3{
     margin: 0;
 }
 & p{
-    color:${colors.lightGrey}
+    color:${colors.lightGrey};
     margin: 0;
+    font-weight: 500;
+    font-size: 0.8rem;
 }
 `

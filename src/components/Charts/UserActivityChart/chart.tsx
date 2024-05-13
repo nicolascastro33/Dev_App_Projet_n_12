@@ -57,7 +57,7 @@ import {
           <Tooltip active={true} content={<CustomTooltip payload={[]} />} />
           <Legend
             verticalAlign="top"
-            height={50}
+            height={90}
             content={<CustomLegend payload={[]} />}
           />
           <Bar dataKey="kilogram" barSize={7} fill={colors.grey}  radius={[10, 10, 0, 0]}/>

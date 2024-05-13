@@ -8,11 +8,14 @@ interface CustomAxisTickProps {
   }
 }
 
+
 export const CustomAxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
   let day = ''
+  let newX = x && x - 5
   switch (payload?.value) {
     case 1:
       day = 'L'
+      newX = x
       break
     case 2:
       day = 'M'
@@ -31,9 +34,10 @@ export const CustomAxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
       break
     case 7:
       day = 'D'
+      newX = x && x - 10
   }
   return (
-    <text  fill={colors.white} x={x && x - 5} y={y}>
+    <text opacity={0.5} fill={colors.white} x={newX} y={y}>
       {day}
     </text>
   )

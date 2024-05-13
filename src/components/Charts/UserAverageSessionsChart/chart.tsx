@@ -50,6 +50,7 @@ function LineChartView({ sessions }: SessionProps) {
           type="monotone"
           dataKey="sessionLength"
           stroke={colors.white}
+          opacity={0.8}
           dot={false}
         />
       </LineChart>

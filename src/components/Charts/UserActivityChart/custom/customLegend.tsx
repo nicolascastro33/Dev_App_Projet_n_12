@@ -12,14 +12,14 @@ const CustomLegendContainer = styled.div`
   display: flex;
   justify-content: space-between;
   & h2 {
-    font-weight: normal;
+    font-weight: 500;
     font-size: 1rem;
     color: ${colors.grey};
     margin: 0;
   }
   & .allTextWrapper {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-content: space-between;
     align-items: center;
   }
@@ -38,7 +38,7 @@ const CustomLegendContainer = styled.div`
     margin: 0;
     font-size: 1rem;
     color: ${colors.lightGrey};
-    font-weight: normal;
+    font-weight: 450;
   }
 }
 `

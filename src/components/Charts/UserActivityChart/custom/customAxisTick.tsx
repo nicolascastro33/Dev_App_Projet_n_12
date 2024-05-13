@@ -17,7 +17,6 @@ export const CustomXaxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
   )
 }
 
-
 export const CustomYaxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
   return (
     <text fill={colors.lightGrey} x={x} y={y}>

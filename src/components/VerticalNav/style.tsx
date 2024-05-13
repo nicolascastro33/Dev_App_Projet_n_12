@@ -68,6 +68,6 @@ export const CopyrightText = styled.p`
   position: absolute;
   bottom: 10%;
   color: ${colors.white};
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   transform: rotate(-90deg);
 `

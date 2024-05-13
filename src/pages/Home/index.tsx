@@ -9,7 +9,8 @@ function Home() {
   const { userId, mainData, getMainData, mainError, mainLoading } =
     useSportSeeStore((state) => state)
   useEffect(() => {
-    if (!mainData || userId !== mainData?.data.id) getMainData(18)
+    if (!mainData || userId !== mainData?.data.id) getMainData(12)
+    // try 12 or 18 for the id
   }, [getMainData, mainData, userId])
 
   if (mainError) {

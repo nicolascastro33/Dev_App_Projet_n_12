@@ -23,6 +23,7 @@ export const TextWrapper = styled.div`
     }
   }
   & p{
+    font-size: 1.2rem;
     margin: 0;
   }
 `
