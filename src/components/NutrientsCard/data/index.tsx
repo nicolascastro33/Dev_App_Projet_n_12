@@ -38,7 +38,7 @@ const nutrientBackgroundColor = (nutrient: string) => {
 }
 
 
-export const NutrientsCardData = (nutrient: string, amount: number | undefined) => {
+export const NutrientsCardData = (nutrient: string, amount: number) => {
     const unit = nutrient === 'Calories' ? 'kCal' : 'g'
     const logo = nutrientPicture(nutrient)
     const backgroundColor = nutrientBackgroundColor(nutrient)

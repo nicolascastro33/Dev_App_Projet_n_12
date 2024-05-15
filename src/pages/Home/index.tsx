@@ -6,12 +6,12 @@ import { useEffect } from 'react'
 import { Loader } from '../../utils/style/loader'
 
 function Home() {
-  const { userId, mainData, getMainData, mainError, mainLoading } =
+  const { userId, firstName, getMainData, mainError, mainLoading } =
     useSportSeeStore((state) => state)
   useEffect(() => {
-    if (!mainData || userId !== mainData?.data.id) getMainData(12)
+    if (!userId) getMainData(12)
     // try 12 or 18 for the id
-  }, [getMainData, mainData, userId])
+  }, [getMainData, userId])
 
   if (mainError) {
     return (
@@ -30,7 +30,7 @@ function Home() {
             <h1>
               Bonjour{' '}
               <span className="nameHeader">
-                {mainData?.data.userInfos.firstName}
+                {firstName}
               </span>
             </h1>
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>

@@ -1,10 +1,14 @@
 import { StateCreator } from 'zustand'
 import { SportSeeFetchApi } from '../../fetch'
-import { userMainProps } from '../../interface'
+// import { SportSeeFetchApi } from '../../mock/fetch'
+import { userKeyData } from '../../interface'
+import { DataModel } from '../../dataModel'
 
 type UserMainState = {
   userId: number | undefined
-  mainData: userMainProps | undefined 
+  scoreUser: number|undefined
+  keyData: userKeyData|undefined 
+  firstName: string|undefined
   mainLoading: boolean
   mainError: boolean
 }
@@ -21,16 +25,21 @@ export const userMainStore: StateCreator<
   UserMainStoreType
 > = (set) => ({
   userId: undefined,
-  mainData: undefined,
+  scoreUser: undefined,
+  keyData: undefined, 
+  firstName: undefined,
   mainLoading: true,
   mainError: false,
 
   getMainData: async (id) => {
     set(() => ({ userId: id, mainLoading: true }))
-    const data = await SportSeeFetchApi.userMainData(id)
-    if (data && typeof data !== "string") {
-      if(!data.data.score)data.data.score = data.data.todayScore
-      set(() => ({ mainData: data }))
+    const response = await SportSeeFetchApi.userMainData(id)
+    if (response && typeof response !== "string") {
+      const dataModel = new DataModel 
+      const firstName = dataModel.getFirstName(response)
+      const scoreUser = dataModel.getTodayScore(response)
+      const keyData = response && dataModel.getKeyData(response)
+      set(() => ({ firstName, scoreUser, keyData  }))
     } else {
       set(() => ({ mainError: true }))
     }

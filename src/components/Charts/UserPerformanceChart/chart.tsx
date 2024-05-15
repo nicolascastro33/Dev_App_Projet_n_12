@@ -12,7 +12,7 @@ import { CustomAngleAxisTick } from './custom/customAngleAxisTick'
 interface DataProps {
   data: {
     value: number
-    kind: number
+    activity: string
   }[]
 }
 
@@ -35,7 +35,7 @@ function RadarChartView({ data }: DataProps) {
         <PolarRadiusAxis domain={[0, "dataMax + 20"]} display={"none"}/>
         <PolarAngleAxis
           tickLine={false}
-          dataKey="kind"
+          dataKey="activity"
           type="category"
           tick={
             <CustomAngleAxisTick

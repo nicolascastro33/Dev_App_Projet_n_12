@@ -1,9 +1,11 @@
 import { StateCreator } from 'zustand'
 import { SportSeeFetchApi } from '../../fetch'
-import { userAverageSessionProps } from '../../interface'
+// import { SportSeeFetchApi } from '../../mock/fetch'
+import { userSessionProps } from '../../interface'
+import { DataModel } from '../../dataModel'
 
 type UserAverageSessionState = {
-  averageData: userAverageSessionProps | undefined
+  averageData: userSessionProps[] | undefined
   averageLoading: boolean
   averageError: boolean
 }
@@ -26,9 +28,11 @@ export const userAverageSessionStore: StateCreator<
 
   getAverageSessionData: async (id) => {
     set(() => ({ averageLoading: true }))
-    const data = await SportSeeFetchApi.userAverageSession(id)
-    if (data && typeof data !== 'string') {
-      set(() => ({ averageData: data }))
+    const response = await SportSeeFetchApi.userAverageSession(id)
+    if (response && typeof response !== 'string' && response.userId === id) {
+      const dataModel = new DataModel
+      const averageData = dataModel.getAverageSessions(response)
+      set(() => ({ averageData }))
     } else {
       set(() => ({ averageError: true }))
     }

@@ -1,9 +1,11 @@
 import { StateCreator } from 'zustand'
 import { SportSeeFetchApi } from '../../fetch'
-import { userActivityProps } from '../../interface'
+// import { SportSeeFetchApi } from '../../mock/fetch'
+import { userActivitySessionsProps } from '../../interface'
+import { DataModel } from '../../dataModel'
 
 type UserActivityState = {
-  activityData: userActivityProps | undefined
+  activityData: userActivitySessionsProps[] | undefined
   activityLoading: boolean
   activityError: boolean
 }
@@ -25,9 +27,11 @@ export const userActivityStore: StateCreator<
 
   getActivityData: async (id) => {
     set(() => ({ activityLoading: true }))
-    const data = await SportSeeFetchApi.userActivity(id)
-    if (data && typeof data !== 'string') {
-      set(() => ({ activityData: data }))
+    const response = await SportSeeFetchApi.userActivity(id)
+    if (response && typeof response !== 'string' && response?.userId === id ) {
+      const dataModel = new DataModel
+      const activityData = dataModel.getDailyActivity(response)
+      set(() => ({ activityData }))
     } else {
       set(() => ({ activityError: true }))
     }

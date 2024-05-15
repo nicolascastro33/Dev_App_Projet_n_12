@@ -12,7 +12,7 @@ function UserActivityChart() {
     activityData,
   } = useSportSeeStore((state) => state)
   useEffect(() => {
-    if ((!activityData || userId !== activityData?.data.userId) && userId)
+    if (!activityData && userId)
       getActivityData(userId)
   }, [activityData, getActivityData, userId])
 
@@ -25,7 +25,7 @@ function UserActivityChart() {
       {activityLoading ? (
         <Loader color="primary" />
       ) : (
-        activityData && <BarChartView sessions={activityData?.data.sessions} />
+        activityData && <BarChartView sessions={activityData} />
       )}
     </>
   )

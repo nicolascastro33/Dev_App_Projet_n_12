@@ -13,7 +13,7 @@ import { CustomCursor } from './custom/customCursor'
 
 interface SessionProps {
   sessions: {
-    day: number
+    day: string
     sessionLength: number
   }[]
 }

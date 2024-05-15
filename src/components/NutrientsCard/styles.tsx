@@ -28,6 +28,9 @@ export const NutrientCardWrapper = styled.div`
   gap: 32px;
   border-radius: 20px;
   align-items: center;
+  @media (max-width: 1200px) {
+    gap: 20px;
+  }
   @media (max-width: 768px) {
     width: 100%;
   }

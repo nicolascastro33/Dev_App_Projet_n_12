@@ -2,11 +2,11 @@ import { AllNutrientsWrapper } from '../styles'
 import NutrientCard from '../card'
 
 interface NutrientCardProps {
-  unit: string
   nutrient: string
-  logo: string | undefined
-  backgroundColor: string | undefined
   amount: number | undefined
+  backgroundColor: string | undefined
+  unit: string | undefined
+  logo: string | undefined
 }
 
 interface NutrientsCardProps {

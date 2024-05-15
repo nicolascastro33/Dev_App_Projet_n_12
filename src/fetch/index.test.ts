@@ -21,7 +21,7 @@ describe('FetchData:', () => {
       fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
       //assert on the response
       const res = await SportSeeFetchApi.userMainData(4)
-      expect(res?.data).toEqual(succeedData)
+      expect(res).toEqual(succeedData)
 
       //assert on the times called and arguments given to fetch
       expect(fetch.requests().length).toEqual(1)
@@ -38,7 +38,7 @@ describe('FetchData:', () => {
       fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
       //assert on the response
       const res = await SportSeeFetchApi.userAverageSession(4)
-      expect(res?.data).toEqual(succeedData)
+      expect(res).toEqual(succeedData)
 
       //assert on the times called and arguments given to fetch
       expect(fetch.requests().length).toEqual(1)
@@ -55,7 +55,7 @@ describe('FetchData:', () => {
       fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
       //assert on the response
       const res = await SportSeeFetchApi.userActivity(4)
-      expect(res?.data).toEqual(succeedData)
+      expect(res).toEqual(succeedData)
 
       //assert on the times called and arguments given to fetch
       expect(fetch.requests().length).toEqual(1)
@@ -72,7 +72,7 @@ describe('FetchData:', () => {
       fetch.mockResponseOnce(JSON.stringify({ data: succeedData }))
       //assert on the response
       const res = await SportSeeFetchApi.userPerformance(4)
-      expect(res?.data).toEqual(succeedData)
+      expect(res).toEqual(succeedData)
 
       //assert on the times called and arguments given to fetch
       expect(fetch.requests().length).toEqual(1)

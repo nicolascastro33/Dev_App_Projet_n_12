@@ -12,7 +12,8 @@ export const SportSeeFetchApi : SportSeeApiService = {
         try {
           const url = import.meta.env.VITE_REACT_API_URL
           const response = await fetch(`${url}/user/${userId}`)
-          return response.json()
+          const data = await response.json().then((element) => element.data)
+          return data
         } catch (err) {
           console.error(err)
           throw err
@@ -22,7 +23,8 @@ export const SportSeeFetchApi : SportSeeApiService = {
       try {
         const url = import.meta.env.VITE_REACT_API_URL
         const response = await fetch(`${url}/user/${userId}/average-sessions`)
-        return response.json()
+        const data = await response.json().then((element) => element.data)
+        return data
       } catch (err) {
         console.error(err)
         throw err
@@ -32,7 +34,8 @@ export const SportSeeFetchApi : SportSeeApiService = {
         try {
           const url = import.meta.env.VITE_REACT_API_URL
           const response = await fetch(`${url}/user/${userId}/activity`)
-          return response.json()
+          const data = await response.json().then((element) => element.data)
+          return data
         } catch (err) {
           console.error(err)
           throw err
@@ -42,7 +45,8 @@ export const SportSeeFetchApi : SportSeeApiService = {
         try {
           const url = import.meta.env.VITE_REACT_API_URL
           const response = await fetch(`${url}/user/${userId}/performance`)
-          return response.json()
+          const data = await response.json().then((element) => element.data)
+          return data
         } catch (err) {
           console.error(err)
           throw err

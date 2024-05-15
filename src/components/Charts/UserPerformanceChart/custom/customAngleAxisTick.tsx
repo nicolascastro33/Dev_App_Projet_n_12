@@ -9,37 +9,26 @@ interface CustomAxisTickProps {
 }
 
 export const CustomAngleAxisTick = ({ x, y, payload }: CustomAxisTickProps) => {
-  let kind = ''
   let newY = y + 5
   let newX = x
   switch (payload?.value) {
-    case 1:
-      kind = 'Cardio'
+    case "Cardio":
       newX = x - 35
       break
-    case 2:
-      kind = 'Energie'
+    case 'Energie':
       newX = x - 35
       break
-    case 3:
-      kind = 'Endurance'
+    case 'Endurance':
       newY = y + 10
       newX = x - 32
       break
-    case 4:
-      kind = 'Force'
-      break
-    case 5:
-      kind = 'Vitesse'
-      break
-    case 6:
-      kind = 'Intensité'
+    case 'Intensité':
       newY = y - 5
       newX = x - 20
   }
   return (
     <text fontSize={12} x={newX} y={newY} fill={colors.white}>
-      {kind}
+      {payload.value}
     </text>
   )
 }

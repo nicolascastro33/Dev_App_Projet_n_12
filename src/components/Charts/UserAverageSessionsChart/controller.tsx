@@ -12,7 +12,7 @@ function UserAverageSessionChart() {
     averageData,
   } = useSportSeeStore((state) => state)
   useEffect(() => {
-    if ((!averageData || userId !== averageData?.data.userId) && userId) getAverageSessionData(userId)
+    if (!averageData && userId) getAverageSessionData(userId)
   }, [getAverageSessionData, averageData, userId])
 
   if (averageError) {
@@ -24,7 +24,7 @@ function UserAverageSessionChart() {
       {averageLoading ? (
         <Loader color="white"/>
       ) : (
-        averageData && <LineChartView sessions={averageData?.data.sessions} />
+        averageData && <LineChartView sessions={averageData} />
       )}
     </>
   )
