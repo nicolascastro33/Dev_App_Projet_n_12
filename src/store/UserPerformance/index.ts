@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
-import { SportSeeFetchApi } from '../../fetch'
-// import { SportSeeFetchApi } from '../../mock/fetch'
+// import { SportSeeFetchApi } from '../../fetch'
+import { SportSeeFetchApi } from '../../mock/fetch'
 import { userDataPerformanceProps } from '../../interface'
 import { DataModel } from '../../dataModel'
 
